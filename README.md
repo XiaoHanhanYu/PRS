@@ -36,8 +36,9 @@ pip install cudatoolkit=10.1 -y
 pip install cudnn=7.6.5 -y
 pip install -r requirements.txt
 ```
-如果你是window用户，执行根目录下的'env.cmd' 即可配置conda环境
 如果你是Linux用户，直接执行根目录下的`env.sh`即可一键配置环境，执行命令为`bash env.sh`。
+
+如果你是window用户，执行根目录下的'env.cmd' 即可配置conda环境
 
 ## 项目说明
 ### **传统方法**
@@ -61,6 +62,8 @@ pip install -r requirements.txt
 ## 网络设计
 使用经典的卷积神经网络，模型的构建主要参考2018年CVPR几篇论文以及谷歌的Going Deeper设计如下网络结构，
 输入层后加入(1,1)卷积层增加非线性表示且模型层次较浅，参数较少（大量参数集中在全连接层）。
+![](./assets/view/CNN.png)
+![](./assets/view/model.png)
 
 ## 模型训练
 主要在FER2013、JAFFE、CK+上进行训练，JAFFE给出的是半身图因此做了人脸检测。最后在FER2013上Pub Test和Pri Test均达到67%左右准确率
@@ -68,11 +71,11 @@ pip install -r requirements.txt
 
 执行下面的命令将在指定的数据集（fer2013或jaffe或ck+）上按照指定的batch_size训练指定的轮次。训练会生成对应的可视化训练过程，
 下图为在三个数据集上训练过程的共同绘图。
+![](./assets/view/loss.png)
 
 ```shell
 python src/train.py --dataset fer2013 --epochs 300 --batch_size 32
 ```
-![](./assets/view/loss.png)
 
 
 ## 模型应用
@@ -84,16 +87,15 @@ python src/train.py --dataset fer2013 --epochs 300 --batch_size 32
 注意，**GUI界面提供缓存，切换下载默认目录，历史记录，下载，模型切换（需要在models目录添加其他识别模型），也可以通过下拉按钮查看该图片所有检测到的结果，同时提供实时视屏流预测，视频预测**
 
 执行下面的命令即可打开GUI程序，该程序依赖PyQT设计，在一个测试图片（来源于网络）上进行测试效果。
-
+![](./assets/view/gui.png)
 ```shell
 python main.py
 ```
 
 上图的main反馈的同时，会对图片上每个人脸进行检测并表情识别。
+![](./assets/view/nine.png)
 
 ### **实时检测**
-实时检测基于Opencv进行设计，旨在用摄像头对实时视频流进行预测。
-
-使用下面的命令会打开摄像头进行实时检测（ESC键退出），若要指定视频进行进行检测，则使用下面的第二个命令。
+实时检测基于Opencv进行设计，旨在用摄像头对实时视频流进行预测，打开摄像头进行实时检测（ESC键退出），也可以指定视频进行进行检测。
 
 
