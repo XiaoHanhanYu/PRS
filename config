@@ -1,0 +1,6 @@
+OUTPUT_PATH = E:/Pattern_Recognition/output2
+DOWNLOAD_PATH = assets/moz/picture
+MOZ_COUNT = 1
+default_module = cnn3_best_weights_ck.h5
+directory = models
+mat = line
