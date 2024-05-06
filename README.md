@@ -3,7 +3,6 @@
 ## 简介
 使用卷积神经网络构建整个系统，在尝试了Gabor、LBP等传统人脸特征提取方式基础上，深度模型效果显著。
 在FER2013、JAFFE和CK+三个表情识别数据集上进行模型评估。
-本项目由 https://github.com/luanshiyinyang/FacialExpressionRecognition.git 进行优化测试改进，
 遵守GNU 通用公共许可证（GNU General Public License，GPL）第三版的内容
 ### blazeface
 人脸检测器
